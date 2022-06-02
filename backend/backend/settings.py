@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("DJANGO_APP_SECRET")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -63,6 +63,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+
+CORS_ALLOWED_ORIGIN = [
+    'http://localhost:3000/'
+]
 
 TEMPLATES = [
     {
