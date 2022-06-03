@@ -1,15 +1,17 @@
 import React from "react";
 import Link from "next/link";
 
-import JobItem from "./job/JobItem";
-import { useRouter } from "next/router";
-
 import Pagination from "react-js-pagination";
+
+import JobItem from "./job/JobItem";
+import Filters from "./layout/Filters";
+import { useRouter } from "next/router";
 
 const Home = ({ data }) => {
   const { jobs, count, resPerPage } = data;
 
   const router = useRouter();
+
   let { page = 1, keyword } = router.query;
   page = Number(page);
 
@@ -17,6 +19,7 @@ const Home = ({ data }) => {
   if (typeof window !== "undefined") {
     queryParams = new URLSearchParams(window.location.search);
   }
+
   const handlePageClick = (currentPage) => {
     if (queryParams.has("page")) {
       queryParams.set("page", currentPage);
@@ -32,14 +35,16 @@ const Home = ({ data }) => {
   return (
     <div className="container container-fluid">
       <div className="row">
-        <div className="col-xl-3 col-lg-4">{/* <Filters /> */}</div>
+        <div className="col-xl-3 col-lg-4">
+          <Filters />
+        </div>
 
         <div className="col-xl-9 col-lg-8 content-left-offset">
           <div className="my-5">
             <h4 className="page-title">
               {keyword
-                ? `${jobs.length} result(s) of ${keyword}`
-                : "Latest jobs"}
+                ? `${jobs.length} Results for ${keyword}`
+                : "Latest Jobs"}
             </h4>
             <Link href="/stats">
               <button className="btn btn-secondary float-right stats_btn">
