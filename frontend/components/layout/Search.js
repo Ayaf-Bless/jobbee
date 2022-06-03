@@ -12,7 +12,7 @@ const Search = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    if (keyword) {
+    if (keyword.trim()) {
       let searchQuery = `/?keyword=${keyword}`;
       //   if (location) searchQuery = searchQuery.concat(`&location=${location}`);
 
