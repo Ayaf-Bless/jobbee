@@ -22,7 +22,6 @@ export async function getServerSideProps({ params }) {
 
     const job = res.data.job;
     const candidates = res.data.candidates;
-    console.log(res);
 
     return {
       props: {
